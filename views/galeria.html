@@ -1,1 +1,25 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galería - Agencia Motta</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <nav><div class="logo">AGENCIA MOTTA</div><ul><li><a href="../index.html">Inicio</a></li><li><a href="galeria.html" class="active">Galería</a></li></ul></nav>
+    <section>
+        <h1>Nuestros Proyectos</h1>
+        <div id="galeria-js" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;"></div>
+    </section>
+    <script>
+        const container = document.getElementById('galeria-js');
+        for(let i=1; i<=6; i++) {
+            const img = document.createElement('img');
+            img.src = `https://picsum.photos/400/300?random=${i}`;
+            img.style.width = "100%";
+            img.style.borderRadius = "5px";
+            container.appendChild(img);
+        }
+    </script>
+</body>
+</html>
