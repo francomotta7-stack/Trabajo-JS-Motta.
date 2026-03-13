@@ -1,1 +1,22 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto - Agencia Motta</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <nav><div class="logo">AGENCIA MOTTA</div><ul><li><a href="../index.html">Inicio</a></li><li><a href="contacto.html" class="active">Contacto</a></li></ul></nav>
+    <section>
+        <h1>Ubicación de la Sede</h1>
+        <div id="map" style="height: 400px; border-radius: 10px;"></div>
+    </section>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([40.4167, -3.7033], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.marker([40.4167, -3.7033]).addTo(map).bindPopup('Agencia Motta Digital').openPopup();
+    </script>
+</body>
+</html>
