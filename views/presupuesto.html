@@ -1,1 +1,50 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Presupuesto - Agencia Motta</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <nav><div class="logo">AGENCIA MOTTA</div><ul><li><a href="../index.html">Inicio</a></li><li><a href="presupuesto.html" class="active">Presupuesto</a></li></ul></nav>
+    <section>
+        <h2>Calcula tu Presupuesto</h2>
+        <form id="formP">
+            <input type="text" id="n" placeholder="Nombre (Máx 15)" required>
+            <input type="text" id="a" placeholder="Apellidos (Máx 40)" required>
+            <input type="text" id="t" placeholder="Teléfono (9 números)" required>
+            <select id="prod">
+                <option value="500">Web Estándar (500€)</option>
+                <option value="1200">Tienda Online (1200€)</option>
+            </select>
+            <label>Plazo (meses): <input type="number" id="m" value="1" min="1"></label>
+            <div>
+                <label><input type="checkbox" class="ex" value="200"> SEO (+200€)</label>
+            </div>
+            <h3>Total: <span id="total">500</span>€</h3>
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+    </section>
+    <script>
+        const calc = () => {
+            let base = parseInt(document.getElementById('prod').value);
+            let meses = parseInt(document.getElementById('m').value);
+            let extras = 0;
+            document.querySelectorAll('.ex:checked').forEach(x => extras += parseInt(x.value));
+            let dto = meses > 6 ? 0.9 : 1; 
+            document.getElementById('total').innerText = (base + extras) * dto;
+        };
+        document.querySelectorAll('input, select').forEach(el => el.oninput = calc);
+        document.getElementById('formP').onsubmit = (e) => {
+            const nom = document.getElementById('n').value;
+            const ape = document.getElementById('a').value;
+            const tel = document.getElementById('t').value;
+            if (nom.length > 15 || ape.length > 40 || !/^\d{9}$/.test(tel)) {
+                alert("Revisa los datos: Nombre (máx 15), Apellidos (máx 40), Teléfono (9 números)");
+                return false;
+            }
+            alert("¡Formulario enviado con éxito!");
+        };
+    </script>
+</body>
+</html>
